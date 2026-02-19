@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "nerfspear",
+	"version": "${version}",
+	"name": "Nerf Spear",
+	"description": "Nerf the Spear's velocity damage heavily",
+	"authors": [
+		"Searchies"
+	],
+	"contact": {
+		"homepage": "https://searchies.net/",
+		"sources": "https://github.com/Searchies/NerfSpear"
+	},
+	"license": "MIT",
+	"icon": "assets/nerfspear/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.searchies.nerfspear.NerfSpear"
+		]
+	},
+	"mixins": [
+		"nerfspear.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
