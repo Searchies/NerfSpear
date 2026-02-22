@@ -2,6 +2,7 @@ package net.searchies.nerfspear.mixin;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,6 +13,13 @@ public abstract class LivingEntityMixin {
 
 	@ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
 	private float nerfSpearDamage(float amount, DamageSource source) {
+		LivingEntity victim = (LivingEntity) (Object) this;
+
+		// Return normal amount if spear isn't attacking a Player
+		if (!(victim instanceof PlayerEntity)) {
+			return amount;
+		}
+
 		String spearId = null;
 
 		// Check if it's an attack using a Spear
