@@ -24,9 +24,13 @@ public abstract class LivingEntityMixin {
 
 		// Check if it's an attack using a Spear
 		if (source.getAttacker() instanceof LivingEntity attacker) {
-			String itemName = Registries.ITEM.getId(attacker.getMainHandStack().getItem()).getPath();
-			if (itemName.contains("spear")) {
-				spearId = itemName;
+			String mainHandItemName = Registries.ITEM.getId(attacker.getMainHandStack().getItem()).getPath();
+			String offHandItemName = Registries.ITEM.getId(attacker.getOffHandStack().getItem()).getPath();
+
+			if (mainHandItemName.contains("spear")) {
+				spearId = mainHandItemName;
+			} else if (offHandItemName.contains("spear")) {
+				spearId = offHandItemName;
 			}
 		}
 
